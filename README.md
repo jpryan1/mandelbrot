@@ -1,1 +1,1 @@
-# Manelbrot
+# Mandelbrot
