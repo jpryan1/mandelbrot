@@ -5,8 +5,7 @@
 
 window_size = 1000;
 color = 0;
-colors = {'parula','jet','hsv','hot','cool',...
-    'spring','summer','autumn','winter'};
+colors = {'parula','jet','hsv','hot','cool','spring''summer','};
 julia = 0;
 % Initial pass - for loops. This is no good in MATLAB,
 % but let's do this first.
@@ -30,7 +29,7 @@ while(1)
     image = log(image);
     image = image/(max(max(image)));
     image = imresize(image, [1000 1000]);
-    imshow(image), colormap(colors{color+1});%plus one because index
+    imshow(image), colormap('hsv');
     [c_x,c_y] = ginput(1);
     c_x = (1000*c_x/window_size - window_size/2);
     c_y = (1000*c_y/window_size - window_size/2);
@@ -44,8 +43,7 @@ while(1)
         julia = mod(julia+1,2);
     elseif(c_y<-(window_size/2))
         A = [1 0 0; 0 1 0; 0 0 1];
-        color = mod(color+1,9); %This redoes the image, which can
-                                % be avoided. TODO
+        color = mod(color+1,9)+1; %plus one because indexing
     else
         A = A*[0.5 0 c_x; 0 0.5 c_y; 0 0 1];
     end
